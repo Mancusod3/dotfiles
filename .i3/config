@@ -1,0 +1,221 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+set $command Mod4
+set $alt Mod1
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 12
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core 12
+# font, it doesn’t scale on retina/hidpi displays.
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up k
+set $down j
+set $left h
+set $right l
+
+# use Mouse+$command to drag floating windows to their wanted position
+floating_modifier $command
+
+# start a terminal
+bindsym $command+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $command+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $command+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $command+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $command+$left focus left
+bindsym $command+$down focus down
+bindsym $command+$up focus up
+bindsym $command+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $command+Left focus left
+bindsym $command+Down focus down
+bindsym $command+Up focus up
+bindsym $command+Right focus right
+
+# move focused window
+bindsym $command+Shift+$left move left
+bindsym $command+Shift+$down move down
+bindsym $command+Shift+$up move up
+bindsym $command+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $command+Shift+Left move left
+bindsym $command+Shift+Down move down
+bindsym $command+Shift+Up move up
+bindsym $command+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $alt+v split h
+
+# split in vertical orientation
+bindsym $alt+h split v
+
+# enter fullscreen mode for the focused container
+bindsym $command+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $command+s layout stacking
+bindsym $command+w layout tabbed
+bindsym $command+e layout toggle split
+
+# toggle tiling / floating
+bindsym $command+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $command+space focus mode_toggle
+
+# focus the parent container
+bindsym $command+a focus parent
+
+# focus the child container
+#bindsym $command+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym $command+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $command+minus scratchpad show
+
+# bind workspaces
+set $w1 workspace 1: Web
+set $w2 workspace 2: Term
+set $w3 workspace 3
+set $w4 workspace 4
+set $w5 workspace 5
+set $w6 workspace 6
+set $w7 workspace 7
+set $w8 workspace 8: Slack
+set $w9 workspace 9: Hangout
+set $w0 workspace 10
+
+exec --no-startup-id i3-msg '$w1; exec /usr/bin/firefox'
+exec --no-startup-id i3-msg '$w2; exec i3-sensible-terminal'
+
+exec --no-startup-id i3-msg '$w8; exec /usr/bin/slack'
+exec --no-startup-id i3-msg '$w9; exec /usr/bin/yakyak-linux-x64/yakyak'
+
+# switch to workspace
+bindsym $command+1 $w1
+bindsym $command+2 $w2
+bindsym $command+3 $w3
+bindsym $command+4 $w4
+bindsym $command+5 $w5
+bindsym $command+6 $w6
+bindsym $command+7 $w7
+bindsym $command+8 $w8
+bindsym $command+9 $w9
+bindsym $command+0 $w0
+
+# move focused container to workspace
+bindsym $command+Shift+1 move container to $w1
+bindsym $command+Shift+2 move container to $w2
+bindsym $command+Shift+3 move container to $w3
+bindsym $command+Shift+4 move container to $w4
+bindsym $command+Shift+5 move container to $w5
+bindsym $command+Shift+6 move container to $w6
+bindsym $command+Shift+7 move container to $w7
+bindsym $command+Shift+8 move container to $w8
+bindsym $command+Shift+9 move container to $w9
+bindsym $command+Shift+0 move container to $w0
+
+# reload the configuration file
+bindsym $command+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $command+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $command+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $command+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+        tray_output primary
+}
+
+bindsym $mod+Control+Shift+k focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, kill
+
+# Ensure correct keybindings
+exec setxkbmap us -variant mac
+exec synclient "TapButton1"=0
+exec synclient "TapButton2"=0
+
+focus_follows_mouse no
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 655+ #increase sound volume
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 655- #decrease sound volume
+bindsym XF86AudioMute exec amixer -D pulse sset Master toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Lock screen bound to CMD+ALT+L, black
+bindsym $command+$alt+l exec "i3lock -c 000000 -n"
+
+# Set background color to black
+exec --no-startup-id xsetroot -solid "#000000"
