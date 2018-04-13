@@ -12,7 +12,7 @@ set shiftwidth=4
 set tabstop=4
 set incsearch
 set hlsearch
-set clipboard=unnamed
+set clipboard=unnamedplus
 set swapfile
 set dir=~/tmp
 set nocompatible
@@ -39,6 +39,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Bundle 'will133/vim-dirdiff'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
@@ -70,7 +71,7 @@ filetype plugin indent on    " required
 " Drop Vdebug settings at the end of the file " 
 let g:vdebug_options={
 \ 'break_on_open': 1,
-\ 'port': '9009',
+\ 'port': '9000',
 \ 'watch_window_style': 'compact'
 \}
 

@@ -119,11 +119,13 @@ fi
 PATH+=:/usr/bin/
 PATH+=:/usr/local/bin
 PATH+=:/sbin/
+PATH+=:~/.config/composer/vendor/bin
 
 alias mysqlroot="mysql -uroot -proot"
 alias mysqldumproot="mysqldump -uroot -proot"
 
 alias ll="ls -lah"
+alias llperm="ls -l | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\"%0o \",k);print}'"
 alias cd..="cd .."
 alias cd2="cd ../.."
 alias cd3="cd ../../.."
@@ -133,6 +135,7 @@ alias cd6="cd ../../../../../.."
 
 #Vim shortcuts
 alias v="vim"
+alias vclearswp="rm /home/djm/tmp/*.swp"
 
 #file shortcuts
 alias bconf="vim ~/.bashrc" 
@@ -166,6 +169,8 @@ alias gdiff="git diff"
 alias gclean="git clean -fd" 
 #Cache PW for git for 10 hours
 alias gpw="git config --global credential.helper 'cache --timeout=36000'"
+alias ggrep="git grep"
+alias glast="git log --pretty=format: --name-only -n"
 
 #TMUX
 alias tmsource="tmux source-file ~/.tmux.conf"
@@ -173,4 +178,21 @@ alias tmn="tmux new-session -s"
 alias tmls="tmux ls"
 alias tma="tmux attach -t"
 alias tmkill="tmux kill-session -t"
+alias tmk="tmux kill-session -t"
 alias tmd="tmux detach"
+
+#DOCKER
+alias dstat="docker ps -a"
+alias dstop="docker stop $(docker ps -aq)"
+alias drm="docker rm $(docker ps -aq)"
+alias dstart="docker-compose -f ./docker/docker-compose.yml up -d"
+
+#SOUND
+alias sound="amixer -D pulse | grep %"
+
+#NOTIFICATIONS
+alias notifyconf="sudo vim ~/.dunstrc"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -197,8 +197,8 @@ exec synclient "TapButton2"=0
 focus_follows_mouse no
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 655+ #increase sound volume
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 655- #decrease sound volume
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 6553+ #increase sound volume
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 6553- #decrease sound volume
 bindsym XF86AudioMute exec amixer -D pulse sset Master toggle # mute sound
 
 # Sreen brightness controls
@@ -214,8 +214,21 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Border Style
+new_window pixel 3
+# use window title, but no border
+bindsym $command+$alt+t border normal 3
+# use no window title and a thick border
+bindsym $command+$alt+y border pixel 3
+# use neither window title nor border
+bindsym $command+$alt+u border none
+
 # Lock screen bound to CMD+ALT+L, black
 bindsym $command+$alt+l exec "i3lock -c 000000 -n"
 
 # Set background color to black
 exec --no-startup-id xsetroot -solid "#000000"
+
+#Replace notifications daemon with dunst
+exec killall -q notify-osd
+exec --no-startup-id dunst -config /home/djm/.dunstrc

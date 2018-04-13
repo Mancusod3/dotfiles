@@ -16,3 +16,6 @@
 
 !.i3
 !.i3/config
+
+# Selective Ignorance
+.vim/.netrwhist 
