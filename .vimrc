@@ -80,3 +80,8 @@ let g:vdebug_keymap['run'] = '<c-s>'
 
 
 let g:airline#extensions#tabline#enabled = 1
+
+" Autostart Ex when passing . to vim
+if argc() == 1 && argv(0) == '.'
+    autocmd vimenter * Ex
+endif

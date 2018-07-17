@@ -120,6 +120,7 @@ PATH+=:/usr/bin/
 PATH+=:/usr/local/bin
 PATH+=:/sbin/
 PATH+=:~/.config/composer/vendor/bin
+PATH+=:/usr/bin/yakyak-linux-x64/
 
 alias mysqlroot="mysql -uroot -proot"
 alias mysqldumproot="mysqldump -uroot -proot"
@@ -134,7 +135,7 @@ alias cd5="cd ../../../../.."
 alias cd6="cd ../../../../../.."
 
 #Vim shortcuts
-alias v="vim"
+alias v="vim ."
 alias vclearswp="rm /home/djm/tmp/*.swp"
 
 #file shortcuts
@@ -145,8 +146,9 @@ alias tmconf="vim ~/.tmux.conf"
 alias tmsource="tmux source ~/.tmux.conf"
 alias i3conf="sudo vim /home/djm/.i3/config"
 alias myhelp="vim ~/Documents/myhelp.txt"
-#alias hosts="sudo vim /private/etc/hosts"
-#alias vhosts="vim /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf"
+alias hosts="sudo vim /etc/hosts"
+alias group="sudo vim /etc/group"
+alias www="cd /var/www/"
 
 #git
 alias gpull="git pull origin" 
@@ -157,6 +159,7 @@ alias gb="git checkout -b"
 alias gba="git branch -r"
 alias gm="git merge"
 alias gstat="git status"
+alias gstats="git status --porcelain | sed s/^...//"
 alias gaa="git add ."
 alias gcom="git commit -am"
 alias gdel="git branch -D"
@@ -171,6 +174,8 @@ alias gclean="git clean -fd"
 alias gpw="git config --global credential.helper 'cache --timeout=36000'"
 alias ggrep="git grep"
 alias glast="git log --pretty=format: --name-only -n"
+# AUTOCOMPLETE
+test -f ~/.git-completion.bash && . $_
 
 #TMUX
 alias tmsource="tmux source-file ~/.tmux.conf"

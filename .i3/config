@@ -108,7 +108,7 @@ bindsym $command+Shift+minus move scratchpad
 bindsym $command+minus scratchpad show
 
 # bind workspaces
-set $w1 workspace 1: Web
+set $w1 workspace 1: Fox
 set $w2 workspace 2: Term
 set $w3 workspace 3
 set $w4 workspace 4
@@ -116,14 +116,14 @@ set $w5 workspace 5
 set $w6 workspace 6
 set $w7 workspace 7
 set $w8 workspace 8: Slack
-set $w9 workspace 9: Hangout
+set $w9 workspace 9: Chrome
 set $w0 workspace 10
 
 exec --no-startup-id i3-msg '$w1; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg '$w2; exec i3-sensible-terminal'
 
 exec --no-startup-id i3-msg '$w8; exec /usr/bin/slack'
-exec --no-startup-id i3-msg '$w9; exec /usr/bin/yakyak-linux-x64/yakyak'
+exec --no-startup-id i3-msg '$w9; exec /usr/bin/google-chrome'
 
 # switch to workspace
 bindsym $command+1 $w1
