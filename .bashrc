@@ -174,8 +174,12 @@ alias gclean="git clean -fd"
 alias gpw="git config --global credential.helper 'cache --timeout=36000'"
 alias ggrep="git grep"
 alias glast="git log --pretty=format: --name-only -n"
-# AUTOCOMPLETE
+
+# GIT AUTOCOMPLETE
 test -f ~/.git-completion.bash && . $_
+
+# KOMPOSE AUTOCOMPLETE
+source <(kompose completion bash)
 
 #TMUX
 alias tmsource="tmux source-file ~/.tmux.conf"
